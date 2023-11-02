@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'users/css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <header class="banner">
+        <h1>Добро пожаловать в наш магазин</h1>
+        <p>Лучшие товары по лучшим ценам</p>
+    </header>
+
+    <section class="products">
+        <article class="product">
+            <img src="{{ products.1.image.url}}" alt="Product 1">
+            <h2>{{ products.1.name}}</h2>
+            <!-- <p>{{ products.1.description}}</p> -->
+            <span class="price">{{ products.1.price}} UAH</span>
+            <a href="{% url 'products:info_about_product' 2 %}">Детальнее</a>
+        </article>
+
+        <article class="product">
+            <img src="{{ products.0.image.url}}" alt="Product 2">
+            <h2>{{ products.0.name}}</h2>
+            <!-- <p>{{ products.0.description}}</p> -->
+            <span class="price">{{ products.0.price}} UAH</span>
+            <a href="{% url 'products:info_about_product' 1 %}">Детальнее</a>
+        </article>
+
+        <article class="product">
+            <img src="{{ products.0.image.url}}" alt="Product 2">
+            <h2>{{ products.0.name}}</h2>
+            <!-- <p>{{ products.0.description}}</p> -->
+            <span class="price">{{ products.0.price}} UAH</span>
+            <a href="{% url 'products:info_about_product' 1 %}">Детальнее</a>
+        </article>
+
+        <!-- Добавьте больше продуктов -->
+
+    </section>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+/* base.css */
+
+/* Стили для тегов и элементов во всем документе */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* Стили для навигационного блока */
+.navigation_block {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Добавил отступы сверху и снизу для улучшенного отображения */
+}
+
+.user_block {
+    display: flex;
+    align-items: center;
+}
+
+.user_item_menu {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.product_items_menu_block {
+    padding: 10px;
+}
+
+.product_item_menu {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+/* Стили для контента страницы */
+
+
+/* Стили для блока приветствия */
+
+.content{
+    height: 100vh;
+}
+
+.hello_block {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.footer{
+    width: 100%;
+    height: 250px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    color: white;
+    margin-top: 50px;
+    background-color: #333;
+    
+}
+
+.block_with_text{
+    padding-top: 122px;
+    text-align: center;
+    margin-bottom: 0px;  
+}
+
+/* Дополнительные стили можно добавить здесь */

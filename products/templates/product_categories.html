@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'products/css/product_categories.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main_block">
+        <div class="list_of_categories">
+            {% for one_category in product_categories %}
+            <div class="one_category_block">
+                <a {% if one_category.id == category.id %} class="selected_category" {% else %} class="defolt_category" {% endif %} href="{% url 'products:product_categories' one_category.id %}">{{ one_category.name }}</a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="items_block">
+            {% include 'category.html '%}
+        </div>
+    </div>
+{% endblock %}
+

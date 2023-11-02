@@ -1,0 +1,16 @@
+
+
+{% block content %}
+
+    {% for product in products_of_category %}
+        <div class="product_card">
+            {% if product.image and product.image.url %}
+                <img style="width: 100px; padding-bottom: 10px;"  src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+                <p>Изображение не доступно</p>
+            {% endif %}
+            <a class="product_title" href="{% url 'products:info_about_product' product.id %}">{{ product.name }}</a>
+        </div>
+    {% endfor %}
+
+{% endblock %}

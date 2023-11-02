@@ -1,0 +1,36 @@
+
+.main_block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_block{
+    margin-top: 50px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid black;
+}
+
+.block_in_form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.block_username{
+    align-items: center;
+    justify-content: center;
+}
+
+.block_password{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.input_field{
+    width: 200px;
+}

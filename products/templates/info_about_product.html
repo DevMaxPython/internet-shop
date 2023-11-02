@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'products/css/info_about_product.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="main_block">
+        <div class="info_about_product_block">
+            <div class="image_and_name">
+                <div class="product_pictures">
+                    {% if product.image %}
+                        <img style="width: 300px;" src="{{ product.image.url }}" alt="Изображение отсутствует">
+                    {% else %}
+                        <p>Изображение не загружено</p>
+                    {% endif %}
+                </div>
+                <div class="product_name_block">
+                    <h3 class="product_name_block">{{ product.name }}</h3>
+                </div>
+            </div>
+
+            <div class="product_description_block">
+                {{ product.description }}
+            </div>
+            <a href="{% url 'products:add_to_basket' product.id%}">Добавить в корзину</a>
+        </div>
+
+        <div class="comments_block">
+            <div class="list_of_comments">
+                {% for comment in comments %}
+                <div class="one_comment">
+                    <p class="name_user">{{ comment.user }}</p>
+                    <p class="date_added">{{ comment.date_added }}</p>
+                    <p class="text_of_comments">{{ comment.comment }}</p>
+                    {% if request.user == comment.user %}
+                        <a class="btn_edit_comment" href="{% url 'products:edit_comment' comment.id%}">Изменить комментарий</a>
+                        <a class="btn_delete_comment" href="{% url 'products:delete_comment' comment.id%}">Удалить комментарий</a>
+                    {% endif %}
+
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="form_of_cooment_block">
+                <form method="post">
+                    {% csrf_token %}
+                    {% if user.is_authenticated %}
+                        <label>Введите комментарий</label>
+                        <div class="text_field_input_comment">
+                            {{ form.comment }}
+                        </div>
+                        <button class="btn_comment" type="submit">Проккоментировать</button>
+                    {% else %}
+                        <p>Только авторизированные пользователи могут оставлять комментарии</p>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

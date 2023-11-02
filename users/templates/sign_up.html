@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'users/css/sign_in.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="main_block">
+    <div class="form_block">
+        <form method="post">
+            {% csrf_token %}
+            <div class="block_in_form">
+                <div class="block_username">
+                    <label>Введите имя пользователя</label>
+                    <p>{{ form.username }}</p>
+                </div>
+                <div class="block_password">
+                    <label>Введите E-mail</label>
+                    <p>{{ form.email }}</p>
+                </div>
+                <div class="block_password">
+                    <label>Введите пароль</label>
+                    <p>{{ form.password1 }}</p>
+                </div>
+                <div>
+                    <button type="submit">Регистрация</button>
+                </div>
+            </div>      
+        </form>
+        <p>Уже есть аккаунт? <a href="{% url 'users:sign_in' %}">Войти</a></p>
+    </div>
+</div>
+
+{% endblock %}

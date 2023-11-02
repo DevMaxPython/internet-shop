@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form_edit_comment.comment }}
+        <input type="hidden" name="comment_id" value="{{ comment.id }}">
+        <button type="submit">Изменить</button>
+    </form>
+{% endblock %}

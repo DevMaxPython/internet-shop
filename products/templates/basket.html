@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'products/css/basket.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="main_block">
+        <div class="order_information">
+            {% if basket %}
+                <div class="table_block">
+                    <table class="table_with_order">
+                        <thead>
+                            <tr>
+                                <th>Название товара</th>
+                                <th>Цена</th>
+                                <th>Количество</th>
+                                <th>Стоимость</th>
+                                <th>Удалить</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in basket %}
+                                <tr>
+                                    <td>{{ item.product_for_basket }}</td>
+                                    <td>UAH{{ item.product_for_basket.price }}</td>
+                                    <td><a class="change_quantity" href="{% url 'products:increase_quantity' item.id %}">+</a> {{ item.quantity }} <a class="change_quantity" href="{% url 'products:decrease_quantity' item.id %}">-</a></td>
+                                    <td>UAH{{ item.update_total_price }}</td>
+                                    <td><a href="{% url 'products:delete_from_basket' item.id%}">Удалить категорию</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="total_sum_block">
+                    <p>Общая сумма покупки: {{ total_price }}</p>
+                </div>
+            {% else %}
+                <div class="empty_basket_label">
+                    <p>В корзине пока ничего нет</p>
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="form_delivery_information">
+            <form method="post">
+                <div class="in_form_delivery_information">
+                    {% csrf_token %}
+                    <div class="grid_block">
+                        <div class="city_block">
+                            <label>Город</label>
+                            <p class="field_input">{{ form.city}}</p>
+                        </div>
+
+                        <div class="street_block">
+                            <label>Улица</label>
+                            <p class="field_input">{{ form.street}}</p>
+                        </div>
+
+                        <div class="n_house_block">
+                            <label>Номер дома</label>
+                            <p class="field_input">{{ form.numder_of_house}}</p>
+                        </div>
+
+                        <div class="number_phone_block">
+                            <label>Номер телефона</label>
+                            <p class="field_input">{{ form.phone}}</p>
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="payment_method">
+                        <label>Способ оплаты</label>
+                        <p>{{ form.choose_payment_method}}</p>
+                    </div>
+
+                    <div style="display: none;">
+                        <label>Заказ</label>
+                        {{ form.basket_information}}
+                    </div>
+
+                    <div>
+                        <button class="btn_create_delivery" type="submit">Оформить заказ</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    
+    
+
+{% endblock %}

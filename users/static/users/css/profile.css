@@ -1,0 +1,93 @@
+.main_block {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    
+}
+
+.all_blocks{
+    display: flex;
+    flex-direction: row;
+    background-color: #dfdddd;
+    padding: 100px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.block_image_profile {
+    display: flex;
+    text-align: center;
+    padding: 50px;
+    margin-right: 150px;
+    background-color: #cccaca;
+    border-radius: 10px;
+}
+
+.block_image_profile img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 50%; /* Для округлой формы аватара */
+}
+
+.block_main_form {
+    display: flex;
+    padding: 50px;
+    margin-right: 150px;
+    background-color: #cccaca;
+    border-radius: 10px;
+}
+
+.block_upload_avatar {
+    margin-bottom: 15px;
+}
+
+.block_change_username,
+.block_change_phone,
+.block_change_birth {
+    margin-bottom: 15px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.in_form_block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input_form_profile{
+    width: 250px;
+    height: 30px;
+    font-size: 15px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.block_change_password {
+    display: flex;
+    text-align: center;
+    padding: 50px;
+    background-color: #cccaca;
+    border-radius: 10px;
+}
+
+/* При желании можно добавить дополнительные стили и стили для ссылки "Изменить пароль". */

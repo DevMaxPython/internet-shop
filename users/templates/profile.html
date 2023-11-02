@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'users/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="main_block">
+    <div class="all_blocks">
+        <div class="block_image_profile">
+            {% if user.avatar and user.avatar.url %}
+                <img width="150px" height="150px" src="{{ user.avatar.url }}" alt="Изображение профиля">
+            {% else %}
+                Здесь может быть Ваш аватар
+            {% endif %}
+        </div>
+
+        <div class="block_main_form">
+            <form method="post" enctype="multipart/form-data">
+                <div class="in_form_block">
+                    {% csrf_token %}
+                
+                    <div class="block_upload_avatar">
+                        <label>Загрузите автар профиля</label>
+                        <p> {{ form.avatar }} </p>
+                    </div>
+                    <div class="block_change_username">
+                        <label>Введите имя пользователя</label>
+                        <p>{{ form.username }}</p>
+                    </div>
+                    <div class="block_change_phone">
+                        <label>Введите почту</label>
+                        <p>{{ form.email }}</p>
+                    </div>
+                    <div class="block_change_birth">
+                        <label>Дата рождения</label>
+                        <p>{{ form.date_of_birth }}</p>
+                    </div>
+                    
+                    <div>
+                        <button type="submit">Изменить данные</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="block_change_password">
+            <a href="{% url 'users:change_password' %}">Изменить пароль</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
